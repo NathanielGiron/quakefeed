@@ -1,0 +1,23 @@
+<table border="1">
+	<thead>
+		<tr>
+			<th>Time</th>
+			<th>Magnitude</th>
+			<th>Location</th>
+			<th>Depth</th>
+			<th>Lat/Long</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% feed.features.forEach(function(f) { %>
+		<tr>
+			<td><%= f.properties.time %></td>
+			<td><%= f.properties.mag %></td>
+			<td><%= f.properties.place %></td>
+			<td><%= f.geometry.coordinates[2] %></td>
+			<td><%= f.geometry.coordinates[0] + ", " + f.geometry.coordinates[1]%></td>
+		</tr>
+		<% }); %>
+	</tbody>
+</table>
