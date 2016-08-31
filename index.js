@@ -13,12 +13,14 @@ app.get('/', function(req, res) {
 });
 
 app.get('/feed', function(req, res) {
-  request('http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson', function (error, response, body) {
+  request('http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_hour.geojson', function (error, response, body) {
   	
     var dataObj = JSON.parse(body);
     console.log(dataObj);
     if (!error && response.statusCode === 200) {
       res.render('feed', {feed: dataObj});
+    } else {
+    	res.render(error);
     }
   });
 });
